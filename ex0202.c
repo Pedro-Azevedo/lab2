@@ -1,17 +1,24 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 /*
     Escolhe o digito k de um numero n
 */
 //função que calcula o digito k
-int digito(int,int,int*);
+void digito(int,int,int*);
 
 int main(void)
 {
     int n,k, nfinal;
+    int test=0;
 
     printf("Escolha um número e o seu k-ésimo digito\n");
-    scanf("%d %d",&n,&k);
+    test=scanf("%d %d",&n,&k);
+    if(test!=1)
+    {
+        printf("Erro: Por favor introduza números válidos\n");
+        exit(EXIT_FAILURE); 
+    }
     //aplica-se a função utilizando os dados adquiridos
     digito(n,k,&nfinal);
     //apresentação do resultado
@@ -20,7 +27,7 @@ int main(void)
     return EXIT_SUCCESS;
 }
 
-int digito(int _n, int _k, int* _nfinal)
+void digito(int _n, int _k, int* _nfinal)
 {
     int DIV,nsemi,_k1;
     // pretende-se dividir o numero[n] inteiro por 10^(k-1)[DIV]
