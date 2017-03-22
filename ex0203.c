@@ -34,9 +34,10 @@ int verification (long int _n)
 {
     int isValid=0, digit=0;
     long int num=0;
-    digit=_n%10;
-    num=_n/10;
-    if((num%7)==digit)
+    digit=_n%10; //guarda o último digito
+    num=_n/10; // como se trata da divisºao inteira permite que se faça um shift para a 
+               //direita do número para analisar o número sem o último dígito
+    if((num%7)==digit) // condição do problema
         isValid=1;
     return isValid;
 }
