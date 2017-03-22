@@ -3,9 +3,9 @@
 
 int escolheN(int);
 int escolheM(int);
-int GeradorK(int,int*);
-int tentativa(int,int*);
-int comparador(int,int,int,int*);
+void GeradorK(int,int*);
+void tentativa(int,int*);
+void comparador(int,int,int,int*);
 
 int main(void)
 {
@@ -31,7 +31,7 @@ int main(void)
     return EXIT_SUCCESS;
 }
 
-int comparador(int _x, int _k, int _n, int* _comp)
+void comparador(int _x, int _k, int _n, int* _comp)
 {
     if(_x>_k && _x<=_n)
         {
@@ -54,13 +54,13 @@ int comparador(int _x, int _k, int _n, int* _comp)
         }
     return;
 }
-int tentativa(int _n, int* _x)
+void tentativa(int _n, int* _x)
 {
     printf("Escolha um número entre 1 e %d\n", _n);
     scanf("%d", &*_x);
     return;
 }
-int GeradorK(int _n,int* _k)
+void GeradorK(int _n,int* _k)
 {
     int n1;
     n1=_n-1;
