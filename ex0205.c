@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <time.h>
 
+// Definição de constantes para testar o problema
 #define MAX 10
 #define TRYING 10
 
@@ -25,10 +26,10 @@ int main(void)
 
 void adivinhaonumero (int _n, int _m, int* _mytry)
 {
-    srandom(time(NULL));
+    srandom(time(NULL)); // semente para gerar número aleatório
     int generated=0, decision=0, test=0, c=0, computerGuess=0;
 
-    generated = rand()%(_n+1);
+    generated = rand()%(_n+1); // gera números de 0 a n
 
     printf("Bem-vindo ao jogo \"Adivinha o número\" \n");
     printf("Um número entre 0 e %d foi gerado e o computador tentará adivinhá-lo:\n", _n);
@@ -39,7 +40,7 @@ void adivinhaonumero (int _n, int _m, int* _mytry)
 
     while (*_mytry<=TRYING)
     {
-        computerGuess=(0+_n)/2;
+        computerGuess=(0+_n)/2; // o computador aposta no valor médio do intervalo em que o número está contido
 
         if(computerGuess==generated)
             printf("O número é igual ao gerado: %d\n", computerGuess);
@@ -55,7 +56,7 @@ void adivinhaonumero (int _n, int _m, int* _mytry)
         if(test!=1 || decision<-1 || decision>1)
         {
             printf ("Erro: Por favor insira um número válido no intervalo definido\n");
-            while((c=getchar())!='\n'&& c!=EOF);
+            while((c=getchar())!='\n'&& c!=EOF); // para o caso de se inserir uma letra, limpa o buffer do teclado
         }
         switch(decision)
         {
