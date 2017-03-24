@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <time.h>
 /*
     Adivinha o número aleatório gerado entre 1 e n, em m tentativas
 */
@@ -7,15 +8,15 @@
 int escolheN(int);
 int escolheM(int);
 //gerador do número inteiro a adivinhar
-int GeradorK(int,int*);
+void GeradorK(int,int*);
 //função que imprime e lê o texto de cada jogada
-int tentativa(int,int*);
+void tentativa(int,int*);
 //função que compara o valor introduzido com o valor gerado
-int comparador(int,int,int,int*);
+void comparador(int,int,int,int*);
 
 int main(void)
 {
-    int n,k,x,comp,m,jogada, result;
+    int n=0,k,x,comp,m=0,jogada;
     //escolha do valor máximo gerado [n]
     n=escolheN(n);
     //escolha do valor máximo de tentativas [m]
@@ -44,7 +45,7 @@ int main(void)
     return EXIT_SUCCESS;
 }
 
-int comparador(int _x, int _k, int _n, int* _comp)
+void comparador(int _x, int _k, int _n, int* _comp)
 {//comparação do numero introduzido [_x] e o gerado [_k]
  //é atribuido o valor 0 a *_comp nas situações em que o numero nao esta correto
     if(_x>_k && _x<=_n)
@@ -69,13 +70,19 @@ int comparador(int _x, int _k, int _n, int* _comp)
         }
     return;
 }
-int tentativa(int _n, int* _x)
+void tentativa(int _n, int* _x)
 {   //texto gerado em todas as jogadas e leitura do numero introduzido
+    int test, c=0;
     printf("Escolha um número entre 1 e %d\n", _n);
-    scanf("%d", &*_x);
+    test=scanf("%d", &*_x);
+    if(test!=1)
+    {
+        printf ("Erro: número inválido\n");
+        while((c=getchar())!='\n'&& c!=EOF);
+    }
     return;
 }
-int GeradorK(int _n,int* _k)
+void GeradorK(int _n,int* _k)
 {   //gera um numero aleatorio
     srandom(time(NULL));
     //random()%_n - restringe esse mesmo valor a [0,(n-1)]
