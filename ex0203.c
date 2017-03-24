@@ -1,6 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+//Função de verificação do número
 int verification(long int);
 
 int main(void)
@@ -12,6 +13,7 @@ int main(void)
 
     test=scanf("%ld", &num);
 
+    // Testar o retorno do scanf
     if(test!=1 || num<0)
     {
         printf("Error: That is not a valid number\n");
@@ -20,6 +22,7 @@ int main(void)
 
     ver=verification(num);
 
+    // Verificar o retorno da função 
     if(ver==1)
         printf("That is a valid number\n");
 
@@ -34,8 +37,11 @@ int verification (long int _n)
 {
     int isValid=0, digit=0;
     long int num=0;
+    // O resto da divisão de um número por 10 dá o último dígito desse número
     digit=_n%10;
+    // Dividir um número de k digitos por 10 e guardá-lo como inteiro guarda os k-1 dígitos mais significativos do número
     num=_n/10;
+    //Condição de Validade -> põe a flag a 1 e retorna-a; 
     if((num%7)==digit)
         isValid=1;
     return isValid;
