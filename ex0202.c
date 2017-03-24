@@ -1,10 +1,11 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <math.h>
 /*
     Imprime k digitos de um numero n
 */
 //função que calcula o digito i
-int digito(int,int,int*);
+void digito(int,int,int*);
 
 int main(void)
 {
@@ -25,7 +26,7 @@ int main(void)
     return EXIT_SUCCESS;
 }
 
-int digito(int _n, int _i, int* _nfinal)
+void digito(int _n, int _i, int* _nfinal)
 {
     int DIV,nsemi,_k1;
     // pretende-se dividir o numero[n] inteiro por 10^(k-1)[DIV]
